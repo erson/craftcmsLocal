@@ -1,0 +1,8 @@
+baseUrl: 'http://localhost'
+handle: default
+hasUrls: true
+language: en-US
+name: craftcms
+primary: true
+siteGroup: 174e83f3-b01c-45bd-9cf6-7f87591288df
+sortOrder: 1

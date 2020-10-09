@@ -1,0 +1,42 @@
+version: '2'
+services:
+  nginx:
+      image: registry.gitlab.com/mattgrayisok/craft-cms-in-docker/nginx:latest
+      ports:
+          - 80:80
+      volumes:
+          - uploads-data:/var/www/html/web/images
+          - cpresources-data:/var/www/html/web/cpresources
+
+  php:
+      image: registry.gitlab.com/mattgrayisok/craft-cms-in-docker/php:latest
+      expose:
+          - 9000
+      volumes:
+          - cpresources-data:/var/www/html/web/cpresources
+          - uploads-data:/var/www/html/web/images
+      environment:
+        DB_DRIVER: mysql
+        DB_SERVER: database
+        DB_USER: project
+        DB_PASSWORD: project
+        DB_DATABASE: project
+        DB_SCHEMA: public
+        DB_TABLE_PREFIX: craft_
+        ENVIRONMENT: production
+        SECURITY_KEY: AAAAAAAAAAAAAAAAAAAAAAAAA
+
+  database:
+      image: mariadb:10.3
+      volumes:
+          - db-data:/var/lib/mysql
+      environment:
+          MYSQL_ROOT_PASSWORD: secret
+          MYSQL_DATABASE: project
+          MYSQL_USER: project
+          MYSQL_PASSWORD: project
+
+volumes:
+  uploads-data:
+  cpresources-data:
+  db-data:

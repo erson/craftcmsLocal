@@ -1,0 +1,21 @@
+dateModified: 1602250249
+email:
+  fromEmail: r.k.erson@gmail.com
+  fromName: craftcms
+  transportType: craft\mail\transportadapters\Sendmail
+graphql:
+  publicToken:
+    enabled: false
+    expiryDate: null
+system:
+  edition: solo
+  live: true
+  name: craftcms
+  schemaVersion: 3.5.13
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: ''
+  photoVolumeUid: null
+  requireEmailVerification: true
